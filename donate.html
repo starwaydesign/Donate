@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rizky Nur Alief · Connect</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --accent: #7c5cff;
+      --accent-2: #00e5c7;
+      --accent-3: #ff5c8a;
+      --glass-border: rgba(255, 255, 255, 0.09);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: #04040a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px 18px;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      font-family: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 10%, rgba(124, 92, 255, 0.14), transparent 60%),
+        radial-gradient(ellipse 55% 45% at 85% 20%, rgba(0, 229, 199, 0.10), transparent 60%),
+        radial-gradient(ellipse 50% 60% at 70% 90%, rgba(255, 92, 138, 0.10), transparent 60%),
+        radial-gradient(ellipse 40% 40% at 25% 85%, rgba(124, 92, 255, 0.08), transparent 60%);
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .container {
+      max-width: 660px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .profile-card-2 {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 30px;
+      padding: 30px 26px;
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1), border-color 0.35s;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: cardEntry 0.7s cubic-bezier(.2,.8,.2,1) both;
+    }
+
+    .profile-card-2::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(124,92,255,.45), transparent 35%, transparent 65%, rgba(0,229,199,.35));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    @keyframes cardEntry {
+      0% { opacity: 0; transform: translateY(-24px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .link-card {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 15px 18px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: transform 0.25s cubic-bezier(.2,.8,.2,1), background 0.25s, border-color 0.25s;
+      position: relative;
+      overflow: hidden;
+      animation: linkFade 0.5s cubic-bezier(.2,.8,.2,1) backwards;
+    }
+
+    .link-card:nth-child(1) { animation-delay: 0.05s; }
+    .link-card:nth-child(2) { animation-delay: 0.10s; }
+    .link-card:nth-child(3) { animation-delay: 0.15s; }
+    .link-card:nth-child(4) { animation-delay: 0.20s; }
+    .link-card:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes linkFade {
+      0% { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .link-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.55s ease;
+    }
+
+    .link-card:hover::before { transform: translateX(120%); }
+
+    .link-card::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 3px;
+      height: 55%;
+      border-radius: 4px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      transform: translateY(-50%) scaleY(0);
+      transition: transform 0.25s ease;
+    }
+
+    .link-card:hover::after { transform: translateY(-50%) scaleY(1); }
+
+    .link-card:hover {
+      transform: translateY(-2px) scale(1.015);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .link-card i {
+      font-size: 1.5rem;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+      flex-shrink: 0;
+    }
+
+    .link-card:hover i { transform: rotate(360deg) scale(1.1); }
+
+    .link-card .label { display: flex; flex-direction: column; text-align: left; }
+    .link-card .label strong { font-size: 1rem; font-weight: 600; letter-spacing: 0.3px; transition: transform 0.2s; }
+    .link-card .label small { font-size: 0.72rem; color: rgba(255,255,255,0.45); letter-spacing: 0.3px; }
+    .link-card:hover .label strong { transform: translateX(3px); }
+
+    .link-card .arrow {
+      margin-left: auto;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      transition: transform 0.25s, color 0.25s;
+    }
+    .link-card:hover .arrow { transform: translateX(4px); color: #fff; }
+
+    .fa-instagram { color: #E4405F; }
+    .fa-facebook { color: #1877F2; }
+    .fa-tiktok { color: #fff; }
+    .fa-youtube { color: #FF4500; }
+    .fa-whatsapp { color: #25D366; }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 6px 2px 2px;
+      font-size: 0.72rem;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      font-weight: 600;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+    }
+
+    @media (max-width: 500px) {
+      body { padding: 18px 12px; }
+      .profile-card-2 { padding: 22px 16px; border-radius: 26px; }
+      .link-card { padding: 13px 14px; gap: 13px; border-radius: 15px; }
+      .link-card i { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 10px; }
+      .link-card .label strong { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 380px) {
+      .link-card .label strong { font-size: 0.88rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="profile-card-2">
+      <div class="section-label">Connect With Me</div>
+      <div class="links-container">
+        <a href="https://www.instagram.com/" class="link-card" target="_blank" rel="noopener">
+          <i class="fab fa-instagram"></i>
+          <div class="label"><strong>Instagram</strong><small>@rizkynuralief</small></div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://www.facebook.com" class="link-card" target="_blank" rel="noopener">
+          <i class="fab fa-facebook"></i>
+          <div class="label"><strong>Facebook</strong><small>Rizky Nur Alief</small></div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://www.tiktok.com/" class="link-card" target="_blank" rel="noopener">
+          <i class="fab fa-tiktok"></i>
+          <div class="label"><strong>TikTok</strong><small>@rizkynuralief</small></div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://youtube.com/" class="link-card" target="_blank" rel="noopener">
+          <i class="fab fa-youtube"></i>
+          <div class="label"><strong>YouTube</strong><small>Creative Content</small></div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+        <a href="https://wa.me/6289630063584" class="link-card" target="_blank" rel="noopener">
+          <i class="fab fa-whatsapp"></i>
+          <div class="label"><strong>For Business / Inquiries</strong><small>Let's collaborate</small></div>
+          <i class="fas fa-arrow-right arrow"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
